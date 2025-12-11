@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  k6:
+    image: grafana/k6:latest
+    volumes:
+      - ./k6:/scripts
+    command: run --summary-trend-stats="avg,med,p(90),p(95),p(99),max" /scripts/cache-test.js
+    environment:
+      - BASE_URL=http://app:8081   # 容器内 DNS 解析（应用监听 8081）
+    networks:
+      - app-net
+    depends_on:
+      - app
+
+networks:
+  app-net:
+    external: true   # 复用业务 compose 里的网络
+

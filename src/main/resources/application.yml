@@ -1,0 +1,31 @@
+server:
+  port: 8081
+  tomcat:
+    threads:
+      max: 200          # 最大工作线程数（默认200，可适当增加）
+      min-spare: 10     # 最小空闲线程数
+    max-connections: 10000  # 最大连接数
+    accept-count: 100   # 等待队列大小
+
+spring:
+  application:
+    name: boot-cache-star
+
+redisson:
+  address: redis://127.0.0.1:6379
+  database: 0
+  password:
+  thread-pool-size: 16  # Redisson 线程池大小
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,health
+  endpoint:
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: false
