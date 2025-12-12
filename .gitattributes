@@ -1,2 +1,16 @@
+# 统一换行符（与语言占比无关，但建议保留）
+* text=auto
 /mvnw text eol=lf
 *.cmd text eol=crlf
+
+# 让 Linguist 不计入 Dockerfile（或你想排除的任何文件）
+*.Dockerfile linguist-detectable=false
+Dockerfile linguist-detectable=false
+
+# 显式指定 Java 目录参与统计
+src/main/java/**/*.java linguist-detectable=true
+src/test/java/**/*.java linguist-detectable=false   # 测试代码如不想算，可设为 false
+
+# 若前端模板把比例抬高，也可一并排除
+*.html linguist-detectable=false
+*.css linguist-detectable=false
