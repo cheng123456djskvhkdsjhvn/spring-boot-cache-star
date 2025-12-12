@@ -9,7 +9,7 @@ Dockerfile linguist-detectable=false
 
 # 显式指定 Java 目录参与统计
 src/main/java/**/*.java linguist-detectable=true
-src/test/java/**/*.java linguist-detectable=false   # 测试代码如不想算，可设为 false
+src/test/java/**/*.java linguist-detectable=false  
 
 # 若前端模板把比例抬高，也可一并排除
 *.html linguist-detectable=false
