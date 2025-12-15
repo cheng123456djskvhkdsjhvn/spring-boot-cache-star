@@ -37,4 +37,5 @@ services:
 networks:
   app-net:
     driver: bridge
+    name: app-net
 

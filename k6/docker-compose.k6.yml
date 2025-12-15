@@ -1,17 +1,14 @@
-version: "3.8"
-
 services:
   k6:
     image: grafana/k6:latest
     volumes:
-      - ./k6:/scripts
+      # compose 文件位于 k6/ 目录，挂载当前目录到容器 /scripts
+      - ./:/scripts:ro
     command: run --summary-trend-stats="avg,med,p(90),p(95),p(99),max" /scripts/cache-test.js
     environment:
       - BASE_URL=http://app:8081   # 容器内 DNS 解析（应用监听 8081）
     networks:
       - app-net
-    depends_on:
-      - app
 
 networks:
   app-net:
